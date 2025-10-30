@@ -1,0 +1,57 @@
+# BOOKSTORE API
+## OVERVIEW
+The bookstore API allows developers to acess data about books , authors and book sales.
+You can use this API to retrieve book information, add ne books, update existing records , and manage authors.
+All response are returned in JSON format.
+
+Base URL
+``` https:// api.boookstore.example.com/v1 ```
+## Authentication
+This API use API key Authentication 
+Include your API key in your request header for all authenticated endpoints.
+Example
+``` Authorization: Bearer YOUR_API_KEY ```
+If an invalid API key is used, the server returns a 401 Unauthorized error.
+
+## Endpoints
+1. Get all books 
+Endpoint:
+``` GET/books ```
+Description:
+Fetches a paginated list of all book in the store.
+Query parameters
+
+|parameter|Type|Description
+-------|---------|-----------
+|page|integer|Page number (default 1)|
+|limit|integer|Number of results per page (default-10)|
+|author|string|Filter book by author"s name(optional)|
+
+Example request
+
+``` 
+curl GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorization:Bearer YOUR_API_KEY
+ ```
+
+ Example response:
+ ``` JSON
+ {
+    "page" : 1,
+    "limit" : 5,
+    "total_books":123,
+    {
+        "id":101,
+        "title":"The midnight library",
+        "author": "Matt Haig",
+        "price" : 14.99,
+        "avaliable": true
+
+    },
+    {
+        "id":102,
+        "title":"Atomic Habits",
+        "author": "James clear",
+        "price":20.90,
+        "available": true
+    }.........
+ }
