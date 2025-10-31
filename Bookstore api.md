@@ -30,7 +30,7 @@ Query parameters
 Example request
 
 ``` 
-curl GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorization:Bearer YOUR_API_KEY
+curl -X GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorization:Bearer YOUR_API_KEY
  ```
 
  Example response:
@@ -54,4 +54,24 @@ curl GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorization
         "price":20.90,
         "available": true
     }.........
+ } 
+```
+ 2.  Get books by ID
+ Endpoint:
+ ``` GET/books/{id} ```
+ Description:
+ Retrieve detailed information about a specific book using it's ID
+ Example request:
+
+ ``` 
+ GET https://api.bookstore.com/v1/books/101 Authorizatiom: Baerer YOUR_API_KEY 
+
+ ```
+ Exanple response 
+ ```
+ {
+    "id":101,
+    "title": "The midnight library",
+    "author":"Matt Haig"
+    
  }
