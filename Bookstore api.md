@@ -67,11 +67,76 @@ curl -X GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorizat
  GET https://api.bookstore.com/v1/books/101 Authorizatiom: Baerer YOUR_API_KEY 
 
  ```
- Exanple response 
+ Exanple response :
+ 
  ```
  {
     "id":101,
     "title": "The midnight library",
     "author":"Matt Haig"
+    "genre": "fiction",
+    "published_year":2020,
+    "price": 14.99,
+    "stock": 25
     
- }
+ } 
+ ```
+ 3. Add a New Book
+ Endpoint:
+ ``` POST/ books ```
+
+ Description:
+ Adds a new book to the store catalog.
+
+ Request Body:
+
+ ``` 
+ {
+    "message": "The psychology of money",
+    "author":"Morgan Housel",
+    "genre":"finance",
+    "price": 16.50,
+    "stock": 40 
+ } 
+ ```
+
+  Example Response
+
+ ``` {
+    "message": "Book sucessfully added"
+    "book":{
+    "id":125,
+    "title":"Psychology of money"
+    "Author":"Morgan Housel"
+    "price":16.50,
+    "stock":40
+    }
+  } 
+   ```
+
+  4. Get All Authors
+
+  Endpoint:
+
+  ```GET/authors```
+  Description
+  Returns a list of all registered authors
+  Example response
+  ```
+  {
+    "total_authors: 3,
+    "data" :[
+        {
+            "id":1,"name':"Matt Haig","country":"UK"
+        },
+        {
+            "id":2,"name":"James clear","Country":USA"
+        },
+        {
+            "id":3,"name":"Morgan Housel","country":"USA"
+        }
+    ]
+    
+    
+  }
+  ```
