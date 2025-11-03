@@ -1,24 +1,34 @@
 # BOOKSTORE API
 ## OVERVIEW
-The bookstore API allows developers to acess data about books , authors and book sales.
-You can use this API to retrieve book information, add ne books, update existing records , and manage authors.
+The bookstore API allows developers to access data about books , authors and book sales.
+You can use this API to retrieve book information, add new books, update existing records , and manage authors.
 All response are returned in JSON format.
 
 Base URL
+
 ``` https:// api.boookstore.example.com/v1 ```
+
 ## Authentication
 This API use API key Authentication 
 Include your API key in your request header for all authenticated endpoints.
+
 Example
+
 ``` Authorization: Bearer YOUR_API_KEY ```
+
 If an invalid API key is used, the server returns a 401 Unauthorized error.
 
 ## Endpoints
 1. Get all books 
+
 Endpoint:
+
 ``` GET/books ```
+
 Description:
+
 Fetches a paginated list of all book in the store.
+
 Query parameters
 
 |parameter|Type|Description
@@ -34,11 +44,13 @@ curl -X GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorizat
  ```
 
  Example response:
+
  ``` JSON
  {
     "page" : 1,
     "limit" : 5,
     "total_books":123,
+    
     {
         "id":101,
         "title":"The midnight library",
@@ -57,10 +69,14 @@ curl -X GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorizat
  } 
 ```
  2.  Get books by ID
+
  Endpoint:
+
  ``` GET/books/{id} ```
+
  Description:
- Retrieve detailed information about a specific book using it's ID
+ Retrieve detailed information about a specific book using it's ID.
+
  Example request:
 
  ``` 
@@ -83,6 +99,7 @@ curl -X GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorizat
  ```
  3. Add a New Book
  Endpoint:
+
  ``` POST/ books ```
 
  Description:
@@ -119,9 +136,12 @@ curl -X GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorizat
   Endpoint:
 
   ```GET/authors```
+
   Description
-  Returns a list of all registered authors
-  Example response
+  Returns a list of all registered authors.
+  
+  Example response:
+  
   ```
   {
     "total_authors: 3,
@@ -140,3 +160,12 @@ curl -X GET https://api.bookstore.example.com/v1/books?page=1&limit=5 Authorizat
     
   }
   ```
+  ## Error Codes
+  |Status code|Meaning|Example cause|
+  |--------|---------|-----------|
+  |200 ok|sucessful request|Data retrieved sucessfully |
+  |201 Created|New record created|New book added|
+  |400 Bad request|Invalid input|Missing title or price|
+  |401 Unauthorized|No/Invalid API key|Missing or wrong Authorization header|
+  |404 Not found|Resource not found |Book Id does not exist|
+  |500 internal server error| Server issue|Database or network problem|
